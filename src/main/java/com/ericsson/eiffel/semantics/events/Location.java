@@ -21,6 +21,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Location {
 
+    @SerializedName("name")
+    @Expose
+    private String name;
     /**
      * 
      * (Required)
@@ -37,6 +40,14 @@ public class Location {
     @SerializedName("uri")
     @Expose
     private String uri;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * 
@@ -77,15 +88,18 @@ public class Location {
     public enum Type {
 
         @SerializedName("ARTIFACTORY")
-        ARTIFACTORY("ARTIFACTORY"), @SerializedName("NEXUS")
-        NEXUS("NEXUS"), @SerializedName("PLAIN")
-        PLAIN("PLAIN"), @SerializedName("OTHER")
+        ARTIFACTORY("ARTIFACTORY"),
+        @SerializedName("NEXUS")
+        NEXUS("NEXUS"),
+        @SerializedName("PLAIN")
+        PLAIN("PLAIN"),
+        @SerializedName("OTHER")
         OTHER("OTHER");
         private final String value;
         private final static Map<String, Location.Type> CONSTANTS = new HashMap<String, Location.Type>();
 
         static {
-            for (Location.Type c : values()) {
+            for (Location.Type c: values()) {
                 CONSTANTS.put(c.value, c);
             }
         }
